@@ -167,3 +167,49 @@ button {
         opacity: 0;
     }
 }
+
+#yesButton {
+    transition: transform 0.3s ease !important;
+}
+.form-container {
+    display: none;
+    margin-top: 20px;
+    animation: fadeIn 0.5s;
+}
+
+.form-container input {
+    display: block;
+    margin: 10px auto;
+    padding: 12px;
+    width: 80%;
+    border: 2px solid #ff69b4;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-container button {
+    background: #ff1493;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-container button:hover {
+    transform: scale(1.05);
+    background: #ff0066;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
