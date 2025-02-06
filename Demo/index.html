@@ -4,15 +4,14 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap"
         rel="stylesheet">
-        <!-- Add EmailJS SDK -->
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-        <script type="text/javascript">
-            // Initialize EmailJS (Add this in head section)
-            (function () {
-                emailjs.init('G9rhS88B5lYD7ih6x');
-            })();
-        </script>
-        <link rel="stylesheet" href="valentine.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+
+        (function () {
+            emailjs.init('G9rhS88B5lYD7ih6x');
+        })();
+    </script>
+    <link rel="stylesheet" href="valentine.css">
 </head>
 
 <body>
@@ -29,42 +28,59 @@
         </div>
     </div>
     <script>
-        // JavaScript enhancements
         document.getElementById("yesButton").addEventListener("click", showLove);
         document.getElementById("noButton").addEventListener("click", moveButton);
 
-        const noMessages = ["Are you sure?", "Please say yes!", "Think again!", "Don't break my heart!", "Last chance!", "Pookie please!"];
+        const noMessages = ["Are you sure? 🥺",
+                "Maybe reconsider? 💔",
+                "Did you misclick? 😟",
+                "My heart's breaking... 💔",
+                "Check again? 👀",
+                "But I made you cookies! 🍪",
+                "What if I sing for you? 🎤",
+                "I'll learn to love your hobbies! 🎮",
+                "Puppy eyes activated 🐶",
+                "I'll serenade you every day! 🎶",
+                "Last chance to say yes! 😭",
+                "My WiFi will cry... 📶",
+                "I'll tell your mom! 👩",
+                "Our future cat will miss you 😿",
+                "This button's broken... 🔨"];
         const romanticImages = [
             "https://pbs.twimg.com/media/Fyk7XMnaEAI3PsB.jpg",
-            "https://media.tenor.com/BP70qe8X0J8AAAAe/crycat-crying-cat.png", 
+            "https://media.tenor.com/BP70qe8X0J8AAAAe/crycat-crying-cat.png",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9e71v7IfFLLS_1CfY2it3an-6XH1uROjTfU5c88AwRL8aRkqAYDmoFrm9gpbUqwNameo&usqp=CAU", "https://i.pinimg.com/736x/cb/d8/3b/cbd83b534a315e809a9da2b8cd3ac3bf.jpg"
         ];
 
         const emailParams = {
-                to_name: 'Honey',
-                from_name: 'Your Valentine',
-                message: 'Someone said YES to being your valentine! 💖',
-                reply_to: 'no-reply@valentine.com'
-            };
+            to_name: 'Honey',
+            from_name: 'Your Valentine',
+            message: 'Someone said YES to being your valentine! 💖',
+            reply_to: 'no-reply@valentine.com'
+        };
 
         async function sendNotification() {
-                try {
-                    await emailjs.send(
-                        'service_1likroy',   // EmailJS service ID
-                        'template_i7fd044',  // EmailJS template ID
-                        emailParams
-                    );
-                    console.log('Notification sent successfully!');
-                } catch (error) {
-                    console.error('Failed to send notification:', error);
-                }
+            try {
+                await emailjs.send(
+                    'service_1likroy',  
+                    'template_i7fd044',  
+                    emailParams
+                );
+                console.log('Notification sent successfully!');
+            } catch (error) {
+                console.error('Failed to send notification:', error);
             }
+        }
 
         async function showLove() {
-             // First send notification
+
             await sendNotification();
 
-            // Then show confetti and alert
+            yesButton.textContent = "Aww, Thank you so much 💖";
+            const noButton = document.getElementById("noButton");
+            noButton.style.display = 'none';
+
+
             for (let i = 0; i < 50; i++) createHeart();
             setTimeout(() => {
                 alert("Yay! I Love You, See you soon cutie!💖🥰");
@@ -85,7 +101,6 @@
             const noButton = document.getElementById("noButton");
             const containerRect = document.querySelector('.container').getBoundingClientRect();
 
-            // Random position within container
             const maxX = containerRect.width - noButton.offsetWidth;
             const maxY = containerRect.height - noButton.offsetHeight;
 
@@ -93,19 +108,16 @@
             noButton.style.left = Math.random() * maxX + 'px';
             noButton.style.top = Math.random() * maxY + 'px';
 
-            // Change text
+
             noButton.textContent = noMessages[Math.floor(Math.random() * noMessages.length)];
 
-            // Increase Yes button size
             const yesButton = document.getElementById("yesButton");
             yesButton.style.transform = `scale(${1 + (Math.random() * 0.2)})`;
 
-            // Change image
             const randomImage = romanticImages[Math.floor(Math.random() * romanticImages.length)];
             document.getElementById('valentineImage').src = randomImage;
         }
 
-        // Initial animation
         document.querySelector('.title').style.animationDelay = '0.2s';
         document.querySelector('.image-container').style.animationDelay = '0.4s';
         document.querySelector('.button-container').style.animationDelay = '0.6s';
