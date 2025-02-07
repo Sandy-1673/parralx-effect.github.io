@@ -171,6 +171,7 @@ button {
 #yesButton {
     transition: transform 0.3s ease !important;
 }
+
 .form-container {
     display: none;
     margin-top: 20px;

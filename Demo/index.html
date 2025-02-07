@@ -38,20 +38,20 @@
         document.getElementById("noButton").addEventListener("click", moveButton);
 
         const noMessages = ["Are you sure? 🥺",
-                "Maybe reconsider? 💔",
-                "Did you misclick? 😟",
-                "My heart's breaking... 💔",
-                "Check again? 👀",
-                "But I made you cookies! 🍪",
-                "What if I sing for you? 🎤",
-                "I'll learn to love your hobbies! 🎮",
-                "Puppy eyes activated 🐶",
-                "I'll serenade you every day! 🎶",
-                "Last chance to say yes! 😭",
-                "My WiFi will cry... 📶",
-                "I'll tell your mom! 👩",
-                "Our future cat will miss you 😿",
-                "This button's broken... 🔨"];
+            "Maybe reconsider? 💔",
+            "Did you misclick? 😟",
+            "My heart's breaking... 💔",
+            "Check again? 👀",
+            "But I made you cookies! 🍪",
+            "What if I sing for you? 🎤",
+            "I'll learn to love your hobbies! 🎮",
+            "Puppy eyes activated 🐶",
+            "I'll serenade you every day! 🎶",
+            "Last chance to say yes! 😭",
+            "My WiFi will cry... 📶",
+            "I'll tell your mom! 👩",
+            "Our future cat will miss you 😿",
+            "This button's broken... 🔨"];
         const romanticImages = [
             "https://pbs.twimg.com/media/Fyk7XMnaEAI3PsB.jpg",
             "https://media.tenor.com/BP70qe8X0J8AAAAe/crycat-crying-cat.png",
@@ -70,8 +70,8 @@
         async function sendNotification() {
             try {
                 await emailjs.send(
-                    'service_1likroy',  
-                    'template_i7fd044',  
+                    'service_1likroy',
+                    'template_i7fd044',
                     emailParams
                 );
                 console.log('Notification sent successfully!');
@@ -81,46 +81,46 @@
         }
 
         async function showLove() {
-                const yesButton = document.getElementById("yesButton");
-                const noButton = document.getElementById("noButton");
-                const formContainer = document.getElementById("dateForm");
+            const yesButton = document.getElementById("yesButton");
+            const noButton = document.getElementById("noButton");
+            const formContainer = document.getElementById("dateForm");
 
-                yesButton.style.display = 'none';
-                noButton.style.display = 'none';
-                formContainer.style.display = 'block';
-                yesButton.textContent = successMessages[Math.floor(Math.random() * successMessages.length)];
-            }
-        
+            yesButton.style.display = 'none';
+            noButton.style.display = 'none';
+            formContainer.style.display = 'block';
+            yesButton.textContent = successMessages[Math.floor(Math.random() * successMessages.length)];
+        }
+
         async function submitDetails() {
-                const userName = document.getElementById("userName").value;
-                const meetingDate = document.getElementById("meetingDate").value;
-                const submitBtn = document.getElementById("submitBtn");
+            const userName = document.getElementById("userName").value;
+            const meetingDate = document.getElementById("meetingDate").value;
+            const submitBtn = document.getElementById("submitBtn");
 
-                if (!userName || !meetingDate) {
-                    alert("Please fill both fields! ❤️");
-                    return;
-                }
-
-                emailParams.userName = userName;
-                emailParams.meetingDate = meetingDate;
-                emailParams.message = `${userName} wants to meet on ${meetingDate}! 💞`;
-
-                submitBtn.textContent = "Sending...";
-
-                try {
-                    await sendNotification();
-                    submitBtn.textContent = "Sent! 💖";
-
-                    for (let i = 0; i < 50; i++) createHeart();
-                    setTimeout(() => {
-                        alert(`Perfect! Can't wait for ${meetingDate}, ${userName}! 😍`);
-                    }, 1000);
-
-                } catch (error) {
-                    submitBtn.textContent = "Try Again";
-                    alert("Oops! Something went wrong 😢");
-                }
+            if (!userName || !meetingDate) {
+                alert("Please fill both fields! ❤️");
+                return;
             }
+
+            emailParams.userName = userName;
+            emailParams.meetingDate = meetingDate;
+            emailParams.message = `${userName} wants to meet on ${meetingDate}! 💞`;
+
+            submitBtn.textContent = "Sending...";
+
+            try {
+                await sendNotification();
+                submitBtn.textContent = "Sent! 💖";
+
+                for (let i = 0; i < 50; i++) createHeart();
+                setTimeout(() => {
+                    alert(`Perfect! Can't wait for ${meetingDate}, ${userName}! 😍`);
+                }, 1000);
+
+            } catch (error) {
+                submitBtn.textContent = "Try Again";
+                alert("Oops! Something went wrong 😢");
+            }
+        }
 
         function createHeart() {
             const heart = document.createElement('div');
